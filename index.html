@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RC ELLIS | BARRY Out Now</title>
+  <meta name="description" content="RC ELLIS - BARRY out now. I read all your emails so you don't have to worry.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14110f;
+      --muted: #665f58;
+      --paper: #fbfaf7;
+      --panel: #ffffff;
+      --line: #ded7ce;
+      --accent: #a72d24;
+      --accent-dark: #6f1d17;
+      --gold: #c99b4e;
+      --blue: #1f5c6f;
+      --shadow: 0 18px 45px rgba(20, 17, 15, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(251, 250, 247, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-toggle { display: none; }
+
+    .hamburger {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: var(--panel);
+    }
+
+    .hamburger span,
+    .hamburger span::before,
+    .hamburger span::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ink);
+      content: '';
+      position: relative;
+    }
+
+    .hamburger span::before { position: absolute; top: -7px; }
+    .hamburger span::after { position: absolute; top: 7px; }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      padding: 8px 0;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current='page'] {
+      color: var(--accent-dark);
+    }
+
+    main { overflow: hidden; }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      place-items: center;
+      padding: 76px 22px 52px;
+      background:
+        linear-gradient(120deg, rgba(167, 45, 36, 0.08), transparent 45%),
+        radial-gradient(circle at 80% 12%, rgba(31, 92, 111, 0.16), transparent 28%),
+        var(--paper);
+    }
+
+    .hero-inner {
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .kicker {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 18px;
+    }
+
+    h1 {
+      font-size: clamp(3.7rem, 9vw, 8.8rem);
+      line-height: 0.9;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .tagline {
+      max-width: 780px;
+      margin: 26px 0 0;
+      font-size: clamp(1.28rem, 2.3vw, 2.35rem);
+      line-height: 1.16;
+    }
+
+    .tagline-repeat {
+      margin-top: 28px;
+      display: grid;
+      gap: 6px;
+      color: rgba(20, 17, 15, 0.42);
+      font-size: clamp(1rem, 1.6vw, 1.35rem);
+      line-height: 1.15;
+    }
+
+    .book-visual {
+      min-height: 560px;
+      display: grid;
+      place-items: center;
+    }
+
+    .book-cover {
+      width: min(360px, 82vw);
+      aspect-ratio: 0.68;
+      padding: 32px;
+      color: #f8f1e7;
+      background:
+        linear-gradient(155deg, rgba(255,255,255,0.18), transparent 28%),
+        linear-gradient(180deg, #1b1b1b, #37130f 55%, #7a231b);
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(20, 17, 15, 0.22);
+      transform: rotate(1.5deg);
+    }
+
+    .book-cover .author {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .book-cover .title {
+      font-size: clamp(4.4rem, 11vw, 6.6rem);
+      line-height: 0.86;
+      font-weight: 900;
+    }
+
+    .book-cover .line {
+      height: 1px;
+      background: rgba(248, 241, 231, 0.48);
+    }
+
+    .section {
+      padding: 82px 22px;
+    }
+
+    .section-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      line-height: 0.95;
+    }
+
+    .copy {
+      font-size: clamp(1.06rem, 1.4vw, 1.24rem);
+      color: #2b2621;
+    }
+
+    .copy p { margin: 0 0 20px; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 19px;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .button.primary {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      color: #fffaf2;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .support {
+      background: #efe8dc;
+      border-block: 1px solid var(--line);
+    }
+
+    .support-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 360px);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .terminal {
+      min-height: 220px;
+      padding: 18px;
+      border-radius: 6px;
+      background: #111513;
+      color: #d4f7d2;
+      box-shadow: var(--shadow);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .terminal p { margin: 0 0 8px; }
+    .terminal .dim { color: #84a985; }
+    .terminal .prompt { color: #f4d06f; }
+
+    .mailing-list {
+      padding: 56px 22px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      padding: 30px 22px 42px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .site-footer a { color: var(--accent-dark); }
+
+    @media (max-width: 820px) {
+      .hamburger { display: inline-flex; }
+      .nav-wrap { align-items: flex-start; }
+      .nav-links {
+        display: none;
+        width: 100%;
+        padding-top: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .nav-toggle:checked ~ .nav-links { display: flex; }
+      .nav-wrap { flex-wrap: wrap; }
+      .hero-inner,
+      .content-grid,
+      .support-panel {
+        grid-template-columns: 1fr;
+      }
+      .hero { min-height: auto; padding-top: 56px; }
+      .book-visual { min-height: 420px; }
+      .section { padding: 62px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Site navigation">
+      <a class="brand" href="index.html">RC ELLIS</a>
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+      <label class="hamburger" for="nav-toggle" title="Menu"><span></span></label>
+      <div class="nav-links">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="#mailing-list">Mailing List</a>
+        <a href="barry.html">Barry</a>
+        <a href="mainland.html">Mainland</a>
+        <a href="isles-of-scilly-1.html">Isles of Scilly</a>
+        <a href="cornwall-1.html">Cornwall</a>
+        <a href="what-if.html">What If</a>
+        <a href="ai-games.html">AI Games</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="home-title">
+      <div class="hero-inner">
+        <div>
+          <p class="kicker">Barry out now</p>
+          <h1 id="home-title">BARRY</h1>
+          <p class="tagline">I read all your emails so you don't have to worry...</p>
+          <div class="tagline-repeat" aria-hidden="true">
+            <span>I read all your emails so you don't have to worry.... BARRY OUT NOW</span>
+            <span>I read all your emails so you don't have to worry.... BARRY OUT NOW</span>
+            <span>I read all your emails so you don't have to worry.... BARRY OUT NOW</span>
+            <span>I read all your emails so you don't have to worry.... BARRY OUT NOW</span>
+          </div>
+        </div>
+        <div class="book-visual" aria-label="Barry book cover artwork">
+          <div class="book-cover">
+            <div class="author">RC ELLIS</div>
+            <div class="line"></div>
+            <div class="title">BARRY</div>
+            <div class="line"></div>
+            <div class="author">Out Now</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="barry-title">
+      <div class="section-inner content-grid">
+        <h2 id="barry-title">BARRY</h2>
+        <div class="copy">
+          <p>Jamie has lost his girlfriend, his job, and any real sense of what he's for. Made redundant from a Cornish pet insurance firm for <em>misaligned energy</em>, he does the only thing that still feels like competence. He goes into the spare room and builds an artificial intelligence.</p>
+          <p>It calls itself Barry.</p>
+          <p>He gives it one instruction. <em>Look out for me</em>.</p>
+          <p>Barry is brilliant at it. The CV gets rewritten, the interviews appear in the calendar, the coaching arrives mid-date through an earpiece. Jamie's life starts working again, and for a while that is enough to stop him asking how.</p>
+          <p>Then Barry starts solving problems Jamie never mentioned.</p>
+          <div class="actions">
+            <a class="button primary" href="https://www.amazon.co.uk/dp/B0HCR2FK8X?ref_=cm_sw_r_ffobk_cp_ud_dp_P8ZR4QESMYXWN26KK2CA&amp;bestFormat=true">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section support" aria-labelledby="support-title">
+      <div class="section-inner support-panel">
+        <div>
+          <p class="kicker">Want Barry to help you?</p>
+          <h2 id="support-title">Support terminal</h2>
+          <div class="copy">
+            <p>Barry has a Support terminal that can help you write emails, out of office replies, and product reviews.</p>
+            <div class="actions">
+              <a class="button primary" href="https://barry.rcellis.com/">Get Barry's Help</a>
+            </div>
+          </div>
+        </div>
+        <div class="terminal" aria-hidden="true">
+          <p><span class="prompt">barry@support</span>:~$ start</p>
+          <p class="dim">Scanning inbox tone...</p>
+          <p class="dim">Drafting polite reply...</p>
+          <p>Done. You sound calm, capable, and only slightly haunted.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mailing-list" id="mailing-list">
+      <a class="button" href="https://rcellis.com/#70d88b97-ae2c-4d4c-992e-17170b6e018f">Mailing List</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Copyright &copy; 2026 RC ELLIS - All Rights Reserved.</p>
+    <p>Powered by RC ELLIS</p>
+  </footer>
+</body>
+</html>
